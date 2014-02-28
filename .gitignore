@@ -1,3 +1,6 @@
 
 # fuseblk filesystem temp files (weirdoo!)
 .fuse_*
+
+# kate swap files
+*.kate-swp
