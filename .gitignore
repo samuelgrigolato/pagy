@@ -1,0 +1,3 @@
+
+# fuseblk filesystem temp files (weirdoo!)
+.fuse_*
