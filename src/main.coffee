@@ -1,6 +1,13 @@
 
-square = (x) -> x * x
+class Main
 
-main = () -> alert "The square of 5 is " + (square 5) + "!"
+  square: (x) -> x * x
 
-window.onload = main
+
+# initialization hook
+window.onload = () ->
+  main = new Main
+  console.log "The square of 5 is " + (main.square 5)
+
+# exports
+window.Main = Main
