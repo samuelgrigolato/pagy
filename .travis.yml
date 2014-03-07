@@ -1,1 +1,1 @@
-script: phantomjs runtests.js
+script: phantomjs lib/phantomjs-qunit.js pagy.tests.html 10
