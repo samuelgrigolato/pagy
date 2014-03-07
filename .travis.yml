@@ -11,4 +11,4 @@ before_script:
 script:
  - "./build.sh --test"
  - "./build.sh"
- - phantomjs lib/phantomjs-qunit.js pagy.tests.html 10
+ - phantomjs resources/phantomjs-qunit.js pagy.tests.html 10
