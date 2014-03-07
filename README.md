@@ -2,7 +2,7 @@ Pagy [![Build Status](https://travis-ci.org/samuelgrigolato/pagy.png?branch=mast
 ====
 
 WYSIWYG responsive layout page editor
-
+ 
 How to build
 ============
 
@@ -20,3 +20,8 @@ How to test
 ===========
 
 Just open the _pagy.html_ file. If you want to run the unit tests, open _pagy.tests.html_.
+
+Dependencies
+============
+
+[phantomjs-qunit](https://github.com/samuelgrigolato/phantomjs-qunit) is used to bridge travis and qunit. See .travis.yml for details.
