@@ -1,9 +1,10 @@
 
 before_install:
+ - sudo apt-get update -qq
+ - sudo apt-get install -qq npm
  - sudo npm install -g coffee-script
- -
 
 script:
- - ./build.sh --test
- - ./build.sh
+ - "./build.sh --test"
+ - "./build.sh"
  - phantomjs lib/phantomjs-qunit.js pagy.tests.html 10
