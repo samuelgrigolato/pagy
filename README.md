@@ -1,4 +1,4 @@
-Pagy
+Pagy [![Build Status](https://travis-ci.org/samuelgrigolato/pagy.png?branch=master)](https://travis-ci.org/samuelgrigolato/pagy)
 ====
 
 WYSIWYG responsive layout page editor
