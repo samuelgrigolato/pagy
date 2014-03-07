@@ -4,3 +4,7 @@
 
 # kate swap files
 *.kate-swp
+
+# build assets
+pagy-*.js
+pagy-*.map
