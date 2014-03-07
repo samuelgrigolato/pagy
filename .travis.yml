@@ -1,1 +1,9 @@
-script: phantomjs lib/phantomjs-qunit.js pagy.tests.html 10
+
+before_install:
+ - sudo npm install -g coffee-script
+ -
+
+script:
+ - ./build.sh --test
+ - ./build.sh
+ - phantomjs lib/phantomjs-qunit.js pagy.tests.html 10
