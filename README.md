@@ -7,7 +7,7 @@ How to build
 ============
 
 Just execute the _build.sh_ file without any arguments. If everything went fine you will 
-have a brand new _pagy.js_ file.
+have a brand new _pagy-{version}.js_ file.
 
 How to develop
 ==============
