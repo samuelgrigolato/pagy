@@ -8,6 +8,7 @@
 # build assets
 pagy-*.js
 pagy-*.map
+css
 
 # kate project
 .kateproject
