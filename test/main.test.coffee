@@ -1,11 +1,16 @@
 
 main = new Main
 
-test "square", () ->
-  ok (main.square 3) == 9, "square of 3 = 9"
-  ok (main.square 4) == 16, "square of 4 = 16"
-  
 test "init", () ->
-  $div = $ ".init-add-pagy-class div"
+  
+  $div = $ "#qunit-fixtures > .init div"
+  
   main.init $div
+  
   ok ($div.is ".pagy"), "added pagy class"
+  ok ($div.find ".pagy-menu").length > 0, "added pagy menu element"
+  ok ($div.find ".pagy-viewport").length > 0, "added pagy viewport element"
+  
+test "autoinit", () ->
+  $div = $ "#qunit-fixtures > .autoinit div"
+  ok ($div.is ".pagy")
