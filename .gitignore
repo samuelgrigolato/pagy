@@ -12,3 +12,6 @@ pagy-*.map
 # kate project
 .kateproject
 .kateproject.d
+
+# npm modules dir
+node_modules
