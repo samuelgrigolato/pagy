@@ -6,22 +6,21 @@ WYSIWYG responsive layout page editor
 How to build
 ============
 
-Just execute the _build.sh_ file without any arguments. If everything went fine you will 
-have a brand new _pagy-{version}.js_ file.
+Execute _grunt_ default task.
 
 How to develop
 ==============
 
-Execute _build.sh_ with _--watch_ argument. The console will block and any changes inside 
-the _src_ dir will trigger a compilation. To compile test code, run _build.sh_ with
-_--test_ argument.
+Execute _grunt_ _watch_ task. The console will block and any changes will trigger a compilation and a full unit test execution.
 
 How to test
 ===========
 
-Just open the _pagy.html_ file. If you want to run the unit tests, open _pagy.tests.html_.
+Run _grunt_ _qunit_ task or open _pagy.tests.html_ (considering you already built the source) to see QUnit's default report page.
 
 Dependencies
 ============
 
-[phantomjs-qunit](https://github.com/samuelgrigolato/phantomjs-qunit) is used to bridge travis and qunit. See .travis.yml for details.
+* [qunit](https://qunitjs.com/) unit test framework.
+* [coffee](http://coffeescript.org/) the language of the source and test files.
+* [grunt](http://gruntjs.com/) is used as the build system.
