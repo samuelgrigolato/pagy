@@ -3,6 +3,8 @@ class Main
 
   square: (x) -> x * x
 
+  init: ($el) ->
+    $el.addClass "pagy"
 
 # initialization hook
 window.onload = () ->
