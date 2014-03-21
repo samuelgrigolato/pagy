@@ -3,7 +3,7 @@ language: node_js
 
 node_js:
  - "0.11"
-
+ 
 before_install: npm install -g grunt-cli
 
 install: npm install
@@ -12,8 +12,8 @@ before_script: grunt
 
 deploy:
   provider: heroku
-  api_key: 
-    secure: hYiUEYCp7y557whUceZQp71cRpZ1LZABYI8liHH2oXlTTztN9Siix6x9cZV6MKvdorPbTqlT7SuQjboxPXtUZnUQpB076of7Rjigybdg7ZKS6rAOgmvgvoVm7t0QQiywztTHg+phIJEpId+mJXb0936MNUbMLSx3xRJUpZZY9Oc=
+  api_key:
+    secure: cWBEDgBTTa2vBA0NuXIUa44Am5xaC8+quTTJAeAe2WsO+cPaq1+GsmwFrdLzvGFVX2gFfh14u+IBc9HKbPvpPQ+wfyvqu3IECI+eGamuL4l+iwLsBVCLVKkbqCnRvN5BpHw7fcZTZplRtF1UDLohunYmY9YEPNz3q4sSyi/33EA=
   app: pagy-demo
   on:
-    repo: "samuelgrigolato/pagy"
+    repo: samuelgrigolato/pagy
