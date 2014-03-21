@@ -7,5 +7,8 @@
     "grunt-contrib-qunit": "~0.4.0",
     "grunt-contrib-watch": "~0.6.0",
     "grunt-contrib-less": "~0.10.0"
+  },
+  "dependencies": {
+    "node-static": "~0.7.3"
   }
 }
