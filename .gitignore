@@ -6,6 +6,7 @@
 *.kate-swp
 
 # build assets
+pagy-*.src.coffee
 pagy-*.js
 pagy-*.map
 css

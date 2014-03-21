@@ -1,25 +1,77 @@
- 
+
+@levelZeroBackgroundColor: black;
+@levelOneBackgroundColor: #222;
+
+@defaultFont: courier;
+@defaultFontColor: #DDD;
+@defaultFontSize: 16pt;
+@defaultFontWeight: bold;
+
+@buttonBorder: none;
+@buttonMargin: 10px;
+@buttonBackgroundColor: #660099;
+@buttonHoverBackgroundColor: #9E00ED;
+@buttonHoverFontColor: white;
+@buttonFontWeight: bold;
+    
+@menuWidth: 200px;
+@menuButtonHeight: 50px;
+
 .pagy {
   
   position: relative;
   height: 100%;
   
-  .pagy-menu {
+  .default-font() {
+    font-family: @defaultFont;
+    font-size: @defaultFontSize;
+    font-weight: @defaultFontWeight;
+    color: @defaultFontColor;
+  }
+  .default-font;
+  
+  button {
+    
+    .default-font;
+    font-weight: @buttonFontWeight;
+    
+    background-color: @buttonBackgroundColor;
+    border: @buttonBorder;
+    margin: @buttonMargin;
+    
+    &:hover {
+      background-color: @buttonHoverBackgroundColor;
+      color: @buttonHoverFontColor;
+      cursor: pointer;
+    }
+  }
+  
+  .menu {
+    
     position: absolute;
     top: 0;
     left: 0;
-    width: 100px;
+    width: @menuWidth;
     height: 100%;
-    background-color: black;
+    background-color: @levelOneBackgroundColor;
+    
+    button.exit {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: @menuWidth - 2 * @buttonMargin;
+      height: @menuButtonHeight;
+    }
+    
   }
   
-  .pagy-viewport {
+  .viewport {
     position: absolute;
     top: 0;
     left: 0;
     height: 100%;
     width: 100%;
-    background-color: red;
+    background-color: @levelZeroBackgroundColor;
   }
   
 }

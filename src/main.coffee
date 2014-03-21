@@ -5,12 +5,27 @@ class Main
     $el.addClass "pagy"
     
     $viewport = $ "<div></div>"
-    $viewport.addClass "pagy-viewport"
+    $viewport.addClass "viewport"
     $viewport.appendTo $el
     
     $menu = $ "<div></div>"
-    $menu.addClass "pagy-menu"
+    $menu.addClass "menu"
     $menu.appendTo $el
+    
+    $exitButton = $ "<button></button"
+    $exitButton.addClass "exit"
+    $exitButton.text Pagy.Dictionary.giveMe "exitButtonCaption"
+    $exitButton.appendTo $menu
+    $exitButton.click () => 
+      this.exitButton_onClick()
+
+    
+  exitButton_onClick: () ->
+    message = Pagy.Dictionary.giveMe "exitConfirmMessage"
+    Pagy.BrowserFacade.confirm message, (confirmed) ->
+      if confirmed
+        Pagy.BrowserFacade.closeWindow()
+    
 
 # initialization hook
 window.onload = () ->
@@ -20,4 +35,5 @@ window.onload = () ->
     main.init ($ this)
 
 # exports
-window.Main = Main
+window.Pagy = window.Pagy || {}
+window.Pagy.Main = Main
