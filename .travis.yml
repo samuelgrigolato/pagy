@@ -1,6 +1,3 @@
-env:
-  global:
-    secure: hYiUEYCp7y557whUceZQp71cRpZ1LZABYI8liHH2oXlTTztN9Siix6x9cZV6MKvdorPbTqlT7SuQjboxPXtUZnUQpB076of7Rjigybdg7ZKS6rAOgmvgvoVm7t0QQiywztTHg+phIJEpId+mJXb0936MNUbMLSx3xRJUpZZY9Oc=
 
 language: node_js
 
@@ -15,7 +12,8 @@ before_script: grunt
 
 deploy:
   provider: heroku
-  api_key: HEROKU_API_KEY
+  api_key: 
+    secure: hYiUEYCp7y557whUceZQp71cRpZ1LZABYI8liHH2oXlTTztN9Siix6x9cZV6MKvdorPbTqlT7SuQjboxPXtUZnUQpB076of7Rjigybdg7ZKS6rAOgmvgvoVm7t0QQiywztTHg+phIJEpId+mJXb0936MNUbMLSx3xRJUpZZY9Oc=
   app: pagy-demo
   on:
     repo: "samuelgrigolato/pagy"
