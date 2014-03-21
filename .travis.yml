@@ -15,5 +15,6 @@ deploy:
   api_key:
     secure: cWBEDgBTTa2vBA0NuXIUa44Am5xaC8+quTTJAeAe2WsO+cPaq1+GsmwFrdLzvGFVX2gFfh14u+IBc9HKbPvpPQ+wfyvqu3IECI+eGamuL4l+iwLsBVCLVKkbqCnRvN5BpHw7fcZTZplRtF1UDLohunYmY9YEPNz3q4sSyi/33EA=
   app: pagy-demo
+  buildpack: https://github.com/mbuchetics/heroku-buildpack-nodejs-grunt.git
   on:
     repo: samuelgrigolato/pagy
