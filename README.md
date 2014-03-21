@@ -3,6 +3,8 @@ Pagy [![Build Status](https://travis-ci.org/samuelgrigolato/pagy.png?branch=mast
 
 WYSIWYG responsive layout page editor
  
+Demo: http://pagy-demo.herokuapp.com/pagy.html
+ 
 How to build
 ============
 
