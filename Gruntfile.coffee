@@ -34,3 +34,4 @@ module.exports = (grunt) ->
   grunt.loadNpmTasks 'grunt-contrib-less'
   
   grunt.registerTask 'default', [ 'coffee', 'qunit', 'less' ]
+  grunt.registerTask 'heroku:production', [ 'default' ]
