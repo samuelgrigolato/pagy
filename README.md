@@ -1,4 +1,4 @@
-Pagy [![Build Status](https://travis-ci.org/samuelgrigolato/pagy.png?branch=master)](https://travis-ci.org/samuelgrigolato/pagy)
+Pagy [![Build Status](https://travis-ci.org/samuelgrigolato/pagy.png?branch=master)](https://travis-ci.org/samuelgrigolato/pagy) [![Stories in Ready](https://badge.waffle.io/samuelgrigolato/pagy.png?label=ready)](http://waffle.io/samuelgrigolato/pagy)
 ====
 
 WYSIWYG responsive layout page editor
