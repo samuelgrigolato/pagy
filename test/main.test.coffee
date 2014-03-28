@@ -28,7 +28,7 @@ test "init", () ->
 
   $div = getSandboxDiv()
   
-  ok ($div.is ".pagy"), "should pagy class"
+  ok ($div.is ".pagy"), "should add pagy class"
   ok ($div.find ".menu").length > 0, "should add pagy menu element"
   ok ($div.find ".viewport").length > 0, "should add pagy viewport element"
 
