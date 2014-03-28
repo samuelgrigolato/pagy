@@ -1,5 +1,12 @@
 
+###
+This module is the initialization entry point.
+To start Pagy's engine, one should call the _init_
+method passing the root div as argument.
+###
+
 class Main
+
 
   init: ($el) ->
     $el.addClass "pagy"
@@ -19,13 +26,14 @@ class Main
     $exitButton.click () => 
       this.exitButton_onClick()
 
-    
+
   exitButton_onClick: () ->
     message = Pagy.Dictionary.giveMe "exitConfirmMessage"
     Pagy.BrowserFacade.confirm message, (confirmed) ->
       if confirmed
         Pagy.BrowserFacade.closeWindow()
     
+
 
 # initialization hook
 window.onload = () ->
