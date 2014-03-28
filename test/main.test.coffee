@@ -48,8 +48,8 @@ assertion for the button caption.
 test "exit button", () ->
 
   $div = getSandboxDiv()
-  
   $button = $div.find "button.exit"
+  
   ok $button.length > 0, "should have an exit button"
   
   expectedCaption = dictionary.giveMe "exitButtonCaption"
@@ -64,13 +64,14 @@ behavior.
 test "exit action", () ->
 
   $div = getSandboxDiv()
+  $button = $div.find "button.exit"
   
   fakeBrowser.whenPromptedToConfirmReturn = false
-  main.exitButton_onClick()
+  $button.trigger "click"
   ok !fakeBrowser.windowClosed, "should not close the window if the user cancels"
   
   fakeBrowser.whenPromptedToConfirmReturn = true
-  main.exitButton_onClick()
+  $button.trigger "click"
   ok fakeBrowser.windowClosed, "should close the window if the user agrees"
   
   
