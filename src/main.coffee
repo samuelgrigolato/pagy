@@ -11,29 +11,8 @@ class ViewportView extends Backbone.View
   tagName: "div"
 
   className: "viewport"
-  
-
-
-class MenuView extends Backbone.View
-
-  tagName: "div"
     
-  className: "menu"
     
-  events:
-    "click button.exit": "exit"
-
-  initialize: () ->
-    $exitButton = $ "<button></button>"
-    $exitButton.addClass "exit"
-    $exitButton.text Pagy.Dictionary.giveMe "exitButtonCaption"
-    $exitButton.appendTo @el
-
-  exit: () ->
-    message = Pagy.Dictionary.giveMe "exitConfirmMessage"
-    Pagy.BrowserFacade.confirm message, (confirmed) ->
-      if confirmed
-        Pagy.BrowserFacade.closeWindow()
 
 class Main
 
@@ -48,7 +27,6 @@ class Main
     $el.append @menu.el
 
     
-
 
 # initialization hook
 window.onload = () ->

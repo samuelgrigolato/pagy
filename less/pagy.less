@@ -7,10 +7,13 @@
 @defaultFontSize: 16pt;
 @defaultFontWeight: bold;
 
+@smallerFontSize: 13pt;
+
 @buttonBorder: none;
 @buttonMargin: 10px;
 @buttonBackgroundColor: #660099;
 @buttonHoverBackgroundColor: #9E00ED;
+@buttonPressedBackgroundColor: #8900DE;
 @buttonHoverFontColor: white;
 @buttonFontWeight: bold;
     
@@ -30,6 +33,10 @@
   }
   .default-font;
   
+  .smaller-font-size() {
+    font-size: @smallerFontSize;
+  }
+  
   button {
     
     .default-font;
@@ -43,6 +50,10 @@
       background-color: @buttonHoverBackgroundColor;
       color: @buttonHoverFontColor;
       cursor: pointer;
+    }
+    
+    &.pressed {
+      background-color: @buttonPressedBackgroundColor;
     }
   }
   
@@ -61,6 +72,22 @@
       left: 0;
       width: @menuWidth - 2 * @buttonMargin;
       height: @menuButtonHeight;
+    }
+    
+    button.preview {
+      .smaller-font-size;
+      position: absolute;
+      width: (@menuWidth - 4 * @buttonMargin) / 2;
+      top: 0;
+      left: 0;
+    }
+    
+    button.layout {
+      .smaller-font-size;
+      position: absolute;
+      width: (@menuWidth - 4 * @buttonMargin) / 2;
+      top: 0;
+      left: @menuWidth / 2;
     }
     
   }

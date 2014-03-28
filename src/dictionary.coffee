@@ -16,6 +16,8 @@ class Dictionary
     @expressions = 
       exitButtonCaption: "Exit"
       exitConfirmMessage: "Do you really want to exit?"
+      previewButtonCaption: "Preview"
+      layoutButtonCaption: "Layout"
 
 
   giveMe: ($key) ->
