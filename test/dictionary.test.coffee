@@ -6,6 +6,10 @@ for testing the Pagy.Dictionary module.
 
 dictionary = Pagy.Dictionary
 
+
+module "dictionary"
+    
+
 ###
 Test the dictionary initialization
 process.
