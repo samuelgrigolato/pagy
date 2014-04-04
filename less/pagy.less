@@ -25,10 +25,10 @@
 @pageMinimumHeight: 400px;
 
 @rowMargin: 10px;
-@rowBorder: 2px dashed blue;
+@rowBorder: 2px dashed #AAA;
 @rowMinimumHeight: 50px;
-@rowHoverBackgroundColor: #CCFFCC;
-@rowHoverBorderColor: green;
+@rowHoverBackgroundColor: #EEEEFF;
+@rowHoverBorderColor: #AAF;
 
 .pagy {
   
@@ -131,11 +131,24 @@
 	  margin: @rowMargin;
 	  border: @rowBorder;
 	  min-height: @rowMinimumHeight;
+	  text-align: center;
+	  
+	  > .controls {	  
+	    > .add-row {
+	      display: none;
+	    }	  
+	  }
 	  
 	  &:hover {
 	    background-color: @rowHoverBackgroundColor;
 	    border-color: @rowHoverBorderColor;
-	    cursor: pointer;
+	    
+	    > .controls {	    
+	      > .add-row {
+		display: inline;
+	      }	    
+	    }
+	    
 	  }
 	  
 	}
@@ -145,6 +158,12 @@
     }
     
     &.preview-mode {
+    
+      .row {
+	.controls {
+	  display: none;
+	}
+      }
     
     }
     

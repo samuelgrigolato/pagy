@@ -5,6 +5,9 @@ for testing the menu view.
 ###
 
 
+dictionary = Pagy.Dictionary
+
+
 module "menu",
   setup: () ->
 
