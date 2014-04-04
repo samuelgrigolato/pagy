@@ -82,4 +82,5 @@ class MenuView extends Backbone.View
 
 # exports
 window.Pagy = window.Pagy || {}
+window.Pagy.MenuModel = MenuModel
 window.Pagy.MenuView = MenuView

@@ -41,3 +41,16 @@ test "autoinit", () ->
   ok ($div.is ".pagy"), "should auto initialize div"
   
   
+###
+Test that changing the menu active mode
+also changes the viewport corresponding
+model attribute
+###
+test "active mode propagation", () ->
+  menu = main.menu
+  viewport = main.viewport
+  menu.set "mode", "preview"
+  viewportMode = viewport.get "mode"
+  ok viewportMode == "preview", "should propagate menu's mode to viewport"
+
+  

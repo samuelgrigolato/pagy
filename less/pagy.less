@@ -120,20 +120,32 @@
       min-height: @pageMinimumHeight;
       background-color: @pageBackgroundColor;
       
-      .row {
+    }
+    
+    &.layout-mode {
+    
+      .page {
       
-	margin: @rowMargin;
-	border: @rowBorder;
-	min-height: @rowMinimumHeight;
+	.row {
 	
-	&:hover {
-	  background-color: @rowHoverBackgroundColor;
-	  border-color: @rowHoverBorderColor;
-	  cursor: pointer;
+	  margin: @rowMargin;
+	  border: @rowBorder;
+	  min-height: @rowMinimumHeight;
+	  
+	  &:hover {
+	    background-color: @rowHoverBackgroundColor;
+	    border-color: @rowHoverBorderColor;
+	    cursor: pointer;
+	  }
+	  
 	}
-	
-      }
       
+      }
+    
+    }
+    
+    &.preview-mode {
+    
     }
     
   }

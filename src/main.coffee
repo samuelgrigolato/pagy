@@ -8,16 +8,24 @@ method passing the root div as argument.
 
 class Main
 
+  _menuMode_onChange: () ->
+    mode = @menu.get "mode"
+    @viewport.set "mode", mode
+    
 
   init: ($el) ->
     $el.addClass "pagy"
     
-    @viewport = new Pagy.ViewportView
-    $el.append @viewport.el
+    @viewport = new Pagy.ViewportModel
+    @menu = new Pagy.MenuModel
     
-    @menu = new Pagy.MenuView
-    $el.append @menu.el
+    viewportView = new Pagy.ViewportView { model: @viewport }
+    $el.append viewportView.el
+    
+    menuView = new Pagy.MenuView { model: @menu }
+    $el.append menuView.el
 
+    @menu.on "change:mode", () => @_menuMode_onChange()
     
 
 # initialization hook

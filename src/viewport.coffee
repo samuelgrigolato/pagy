@@ -15,8 +15,21 @@ class ViewportModel extends Backbone.Model
     ###
     "page": null
       
+    ###
+    Define the active mode of the application.
+    Possible values: layout and preview.
+    ###
+    "mode": "layout"
+
+
+  _mode_onChange: () ->
+    page = @get "page"
+    page.set "mode", @get "mode"
+    
+
   initialize: () ->
-    @page = new Pagy.PageModel
+    @set "page", new Pagy.PageModel
+    @on "change:mode", () => @_mode_onChange()
 
 
 
@@ -28,12 +41,18 @@ class ViewportView extends Backbone.View
 
   initialize: () ->    
     @model = @model || new ViewportModel
+    @model.on "change:mode", () => @render()
     @render()
 
 
-  render: () ->    
-    @$el.empty()    
-    page = @model.page    
+  render: () ->  
+    @$el.empty()
+    
+    mode = @model.get "mode"
+    @$el.removeClass "layout-mode preview-mode"
+    @$el.addClass "#{mode}-mode"
+    
+    page = @model.get "page"    
     pageView = new Pagy.PageView { model: page }
     pageView.render()
     @$el.append pageView.$el
@@ -42,4 +61,5 @@ class ViewportView extends Backbone.View
 
 # exports
 window.Pagy = window.Pagy || {}
+window.Pagy.ViewportModel = ViewportModel
 window.Pagy.ViewportView = ViewportView

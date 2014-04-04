@@ -16,6 +16,12 @@ class PageModel extends Backbone.Model
     or more columns
     ###
     "rows": []
+      
+    ###
+    Define the active mode of the application.
+    Possible values: layout and preview.
+    ###
+    "mode": "layout"
 
   initialize: () ->
     @set "rows", [ new Pagy.RowModel ]
