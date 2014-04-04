@@ -12,10 +12,10 @@ class Main
   init: ($el) ->
     $el.addClass "pagy"
     
-    @viewport = new ViewportView
+    @viewport = new Pagy.ViewportView
     $el.append @viewport.el
     
-    @menu = new MenuView
+    @menu = new Pagy.MenuView
     $el.append @menu.el
 
     

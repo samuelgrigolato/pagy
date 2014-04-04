@@ -5,24 +5,6 @@ viewport class
 ###
 
 
-class RowModel extends Backbone.Model
-
-
-
-class PageModel extends Backbone.Model
-
-  defaults:
-    
-    ###
-    Collection of root
-    rows of this page. Each
-    row can contain one
-    or more columns
-    ###
-    "rows": [ new RowModel ]
-
-
-
 class ViewportModel extends Backbone.Model
 
   defaults:
@@ -31,45 +13,10 @@ class ViewportModel extends Backbone.Model
     Define the model of the
     page being edited by the user
     ###
-    "page": new PageModel
-    
-    
-
-class RowView extends Backbone.View
-
-  tagName: "div"
-    
-  className: "row"
-    
-  initialize: () ->  
-    @model = @model || new RowModel
-    @render()
-
-
-  render: () ->
-
-
-
-class PageView extends Backbone.View
-
-  tagName: "div"
-    
-  className: "page"
-    
-  initialize: () ->  
-    @model = @model || new PageModel
-    @render()
-    
-    
-  render: () ->    
-    @$el.empty()
-    @_renderRow row for row in @model.get "rows"
-
-
-  _renderRow: (row) ->    
-    rowView = new RowView { model: row }    
-    rowView.render()    
-    @$el.append rowView.$el
+    "page": null
+      
+  initialize: () ->
+    @page = new Pagy.PageModel
 
 
 
@@ -87,7 +34,7 @@ class ViewportView extends Backbone.View
   render: () ->    
     @$el.empty()    
     page = @model.page    
-    pageView = new PageView { model: page }
+    pageView = new Pagy.PageView { model: page }
     pageView.render()
     @$el.append pageView.$el
     

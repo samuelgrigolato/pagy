@@ -7,12 +7,7 @@ for testing the menu view.
 
 module "menu",
   setup: () ->
-    
 
-initMenuView = () ->
-  $div = $ "<div></div>"
-  new Pagy.MenuView { $el: $div }
-  
 
 ###
 Tests the exit button feature. Include an
@@ -20,7 +15,7 @@ assertion for the button caption.
 ###
 test "exit button", () ->
 
-  view = initMenuView()
+  view = new Pagy.MenuView
   $el = view.$el
   $button = $el.find "button.exit"
   
@@ -37,7 +32,7 @@ behavior.
 ###
 test "exit action", () ->
 
-  view = initMenuView()
+  view = new Pagy.MenuView
   $el = view.$el
   $button = $el.find "button.exit"
   
@@ -56,7 +51,7 @@ button the application should enter preview mode.
 ###
 test "preview mode button", () ->
 
-  view = initMenuView()
+  view = new Pagy.MenuView
   $el = view.$el
   $button = $el.find "button.preview"
   
@@ -72,7 +67,7 @@ button the application should enter layout mode.
 ###
 test "layout mode button", () ->
 
-  view = initMenuView()
+  view = new Pagy.MenuView
   $el = view.$el
   $button = $el.find "button.layout"
   
@@ -88,7 +83,7 @@ layout mode.
 ###
 test "first active mode", () ->
 
-  view = initMenuView()
+  view = new Pagy.MenuView
   $el = view.$el
   $button = $el.find "button.layout"
   
@@ -101,7 +96,7 @@ switch the active one
 ###
 test "switch mode", () ->
 
-  view = initMenuView()
+  view = new Pagy.MenuView
   $el = view.$el
   $buttonLayout = $el.find "button.layout"
   $buttonPreview = $el.find "button.preview"
