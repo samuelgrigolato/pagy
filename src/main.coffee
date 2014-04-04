@@ -4,14 +4,6 @@ This module is the initialization entry point.
 To start Pagy's engine, one should call the _init_
 method passing the root div as argument.
 ###
-
-
-class ViewportView extends Backbone.View
-
-  tagName: "div"
-
-  className: "viewport"
-    
     
 
 class Main

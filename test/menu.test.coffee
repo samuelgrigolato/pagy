@@ -11,7 +11,7 @@ module "menu",
 
 initMenuView = () ->
   $div = $ "<div></div>"
-  $view = new Pagy.MenuView { $el: $div }
+  new Pagy.MenuView { $el: $div }
   
 
 ###
@@ -20,8 +20,8 @@ assertion for the button caption.
 ###
 test "exit button", () ->
 
-  $view = initMenuView()
-  $el = $view.$el
+  view = initMenuView()
+  $el = view.$el
   $button = $el.find "button.exit"
   
   ok $button.length > 0, "should have an exit button"
@@ -37,8 +37,8 @@ behavior.
 ###
 test "exit action", () ->
 
-  $view = initMenuView()
-  $el = $view.$el
+  view = initMenuView()
+  $el = view.$el
   $button = $el.find "button.exit"
   
   fakeBrowser.whenPromptedToConfirmReturn = false
@@ -56,8 +56,8 @@ button the application should enter preview mode.
 ###
 test "preview mode button", () ->
 
-  $view = initMenuView()
-  $el = $view.$el
+  view = initMenuView()
+  $el = view.$el
   $button = $el.find "button.preview"
   
   ok $button.length > 0, "should have a preview button"
@@ -72,8 +72,8 @@ button the application should enter layout mode.
 ###
 test "layout mode button", () ->
 
-  $view = initMenuView()
-  $el = $view.$el
+  view = initMenuView()
+  $el = view.$el
   $button = $el.find "button.layout"
   
   ok $button.length > 0, "should have a layout button"
@@ -88,8 +88,8 @@ layout mode.
 ###
 test "first active mode", () ->
 
-  $view = initMenuView()
-  $el = $view.$el
+  view = initMenuView()
+  $el = view.$el
   $button = $el.find "button.layout"
   
   ok ($button.is ".pressed"), "the first active mode should be layout"
@@ -101,8 +101,8 @@ switch the active one
 ###
 test "switch mode", () ->
 
-  $view = initMenuView()
-  $el = $view.$el
+  view = initMenuView()
+  $el = view.$el
   $buttonLayout = $el.find "button.layout"
   $buttonPreview = $el.find "button.preview"
   
