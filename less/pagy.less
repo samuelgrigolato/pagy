@@ -20,6 +20,16 @@
 @menuWidth: 200px;
 @menuButtonHeight: 50px;
 
+@pageTopMargin: 100px;
+@pageBackgroundColor: #EFEFEF;
+@pageMinimumHeight: 400px;
+
+@rowMargin: 10px;
+@rowBorder: 2px dashed blue;
+@rowMinimumHeight: 50px;
+@rowHoverBackgroundColor: #CCFFCC;
+@rowHoverBorderColor: green;
+
 .pagy {
   
   position: relative;
@@ -93,12 +103,39 @@
   }
   
   .viewport {
+  
     position: absolute;
     top: 0;
-    left: 0;
+    right: 0;
+    left: @menuWidth;
     height: 100%;
-    width: 100%;
     background-color: @levelZeroBackgroundColor;
+    
+    .page {
+    
+      position: absolute;
+      top: @pageTopMargin;
+      left: 5%;
+      width: 90%;
+      min-height: @pageMinimumHeight;
+      background-color: @pageBackgroundColor;
+      
+      .row {
+      
+	margin: @rowMargin;
+	border: @rowBorder;
+	min-height: @rowMinimumHeight;
+	
+	&:hover {
+	  background-color: @rowHoverBackgroundColor;
+	  border-color: @rowHoverBorderColor;
+	  cursor: pointer;
+	}
+	
+      }
+      
+    }
+    
   }
   
 }
