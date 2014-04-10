@@ -18,8 +18,7 @@ class Dictionary
       exitConfirmMessage: "Do you really want to exit?"
       previewButtonCaption: "Preview"
       layoutButtonCaption: "Layout"
-      addRowAboveCaption: "Add row above"
-      addRowBelowCaption: "Add row below"
+      addRowButtonCaption: "Add row"
 
 
   giveMe: ($key) ->
