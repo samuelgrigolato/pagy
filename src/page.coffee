@@ -26,43 +26,8 @@ class PageModel extends Backbone.Model
   initialize: () ->
   
     row = new Pagy.RowModel
-    @_initializeRow row
-    
     @set "rows", [ row ]
-    
-    
-  _initializeRow: (row) ->
-    row.on "addRowAbove", () => @_addRowBelow(row)
-    row.on "addRowBelow", () => @_addRowAbove(row)
-  
-  
-  _addRowAbove: (row) ->
-    index = @_findRowIndex row
-    @_insertRowAt index
-    
-    
-  _addRowBelow: (row) ->
-    index = @_findRowIndex row
-    @_insertRowAt index + 1
 
-
-  _findRowIndex: (row) ->
-    rows = @get "rows"
-    rows.indexOf row
-
-
-  _insertRowAt: (index) ->
-    newRow = new Pagy.RowModel
-    @_initializeRow newRow
-    
-    rows = @get "rows"
-    newRows = rows[..index]
-    newRows = newRows.concat [ newRow ]
-    
-    remaining = index + 1
-    newRows = newRows.concat rows[remaining..]
-
-    @set "rows", newRows
 
 
 class PageView extends Backbone.View
