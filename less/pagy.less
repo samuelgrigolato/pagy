@@ -21,8 +21,10 @@
 @menuButtonHeight: 50px;
 
 @pageTopMargin: 100px;
+@pageBottomMargin: 50px;
 @pageBackgroundColor: #EFEFEF;
 @pageMinimumHeight: 400px;
+@pageVerticalPadding: 2px;
 
 @rowMargin: 10px;
 @rowBorder: 2px dashed #AAA;
@@ -110,15 +112,18 @@
     left: @menuWidth;
     height: 100%;
     background-color: @levelZeroBackgroundColor;
+    overflow-y: scroll;
     
     .page {
     
-      position: absolute;
-      top: @pageTopMargin;
-      left: 5%;
+      margin-top: @pageTopMargin;
+      margin-bottom: @pageBottomMargin;
+      margin-left: 5%;
       width: 90%;
       min-height: @pageMinimumHeight;
       background-color: @pageBackgroundColor;
+      padding-top: @pageVerticalPadding;
+      padding-bottom: @pageVerticalPadding;
       
     }
     
