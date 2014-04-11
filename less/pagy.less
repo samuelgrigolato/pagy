@@ -37,7 +37,7 @@
 @columnMargin: 10px;
 @columnBorder: 2px dashed #AAA;
 @columnMinimumHeight: 80px;
-@columnWidth: 47%;
+@columnWidth: 30%;
 @columnHoverBackgroundColor: #EEEEFF;
 @columnHoverBorderColor: #AAF;
 
@@ -190,7 +190,7 @@
 	  &:hover {
 	    background-color: @rowHoverBackgroundColor;
 	    border-color: @rowHoverBorderColor;
-	    .controls.display-hidden-buttons();
+	    .display-hidden-buttons();
 	  }
 	  
 	}
@@ -207,7 +207,7 @@
 	  &:hover {
 	    background-color: @columnHoverBackgroundColor;
 	    border-color: @columnHoverBorderColor;
-	    .controls.display-hidden-buttons();
+	    .display-hidden-buttons();
 	  }
 	  
 	}
@@ -216,7 +216,7 @@
 	
 	  height: @controlsHeight;
 	  
-	  button {
+	  > button {
 	  
 	      float: left;
 	      display: none;
@@ -231,12 +231,12 @@
 	      
 	  }
 	  
-	  .display-hidden-buttons() {
-	    button {
-	      display: block;
-	    }
-	  }
+	}
 	  
+	.display-hidden-buttons() {
+	  > .controls > button {
+	    display: block;
+	  }
 	}
       
       }
@@ -246,13 +246,13 @@
     &.preview-mode {
     
       .row {
-	.controls {
+	> .controls {
 	  display: none;
 	}
       }
       
       .column {
-        .controls {
+        > .controls {
           display: none;
         }
       }

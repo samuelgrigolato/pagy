@@ -70,3 +70,17 @@ test "add column", () ->
   ok $columns.length == 3, "should create a third column"
   
     
+###
+Test remove column behavior
+###
+test "remove column", () ->
+  view = new Pagy.RowView
+  model = view.model
+  model.addColumn() # this operation adds 2 columns
+  columns = model.get "columns"
+  column = columns[0]
+  column.trigger "remove"
+  columns = model.get "columns"
+  ok columns.length == 0, "should remove the columns"
+
+    

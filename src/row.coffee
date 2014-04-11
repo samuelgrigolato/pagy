@@ -21,15 +21,28 @@ class RowModel extends Backbone.Model
     
   addColumn: () ->
     columns = @get "columns"
-    newColumns = columns.concat @_newColumn
+    newColumns = columns.concat [@_newColumn()]
     if newColumns.length == 1
       # add extra column if there wasn't any
-      newColumns = newColumns.concat @_newColumn
+      newColumns = newColumns.concat [@_newColumn()]
     @set "columns", newColumns
     
   
   _newColumn: () ->
-    new Pagy.ColumnModel
+    column = new Pagy.ColumnModel
+    column.on "remove", () => @_removeColumn column
+    column
+
+
+  _removeColumn: (column) ->
+    columns = @get "columns"
+    if columns.length > 2
+      idx = columns.indexOf column
+      nextIdx = idx + 1
+      newColumns = columns[...idx].concat columns[nextIdx...]
+      @set "columns", newColumns
+    else
+      @set "columns", []
   
     
 
@@ -43,7 +56,7 @@ class RowView extends Backbone.View
     "click > .controls > .remove": "remove"
     "click > .controls > .add-column": "addColumn"
     
-  initialize: () ->  
+  initialize: () ->
     @model = @model || new RowModel
     @model.on "change:columns", () => @render()
     
