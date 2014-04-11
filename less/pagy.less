@@ -28,20 +28,32 @@
 @pageMinimumHeight: 400px;
 @pageVerticalPadding: 2px;
 
-@rowMargin: 10px;
+@rowMargin: 10px 10px 20px 10px;
 @rowBorder: 2px dashed #AAA;
 @rowMinimumHeight: 100px;
 @rowHoverBackgroundColor: #EEEEFF;
 @rowHoverBorderColor: #AAF;
-@rowControlsWidth: @smallIconButtonSize + 2 * @smallIconButtonMargin;
+
+@columnMargin: 10px;
+@columnBorder: 2px dashed #AAA;
+@columnMinimumHeight: 80px;
+@columnWidth: 47%;
+@columnHoverBackgroundColor: #EEEEFF;
+@columnHoverBorderColor: #AAF;
+
+@controlsHeight: 20px;
 
 @smallIconButtonSize: 16px;
-@smallIconButtonMargin: 8px;
+@smallIconButtonMargin: 2px;
 
 .pagy {
   
   position: relative;
   height: 100%;
+  
+  .clearfix {
+    clear: both;
+  }
   
   .default-font() {
     font-family: @defaultFont;
@@ -175,36 +187,54 @@
 	  min-height: @rowMinimumHeight;
 	  text-align: center;
 	  
-	  > .controls {
-	  
-	    float: left;
-	    width: @rowControlsWidth;
-	    
-	    > button {
-	      display: none;
-	    }
-	    
-	  }
-	  
 	  &:hover {
 	    background-color: @rowHoverBackgroundColor;
 	    border-color: @rowHoverBorderColor;
-	    
-	    > .controls {	    
-	      > button {
-		display: block;
-		
-		&.remove {
-		  background-image: url("@{imagesLocation}/trash.png");
-		}
-		
-		&.add-column {
-		  background-image: url("@{imagesLocation}/plus.png");
-		}
-		
+	    .controls.display-hidden-buttons();
+	  }
+	  
+	}
+      
+	.column {
+	
+	  float: left;
+	  margin: @columnMargin;
+	  border: @columnBorder;
+	  min-height: @columnMinimumHeight;
+	  width: @columnWidth;
+	  text-align: center;
+	  
+	  &:hover {
+	    background-color: @columnHoverBackgroundColor;
+	    border-color: @columnHoverBorderColor;
+	    .controls.display-hidden-buttons();
+	  }
+	  
+	}
+	  
+	.controls {
+	
+	  height: @controlsHeight;
+	  
+	  button {
+	  
+	      float: left;
+	      display: none;
+	      
+	      &.remove {
+		background-image: url("@{imagesLocation}/trash.png");
 	      }
+	      
+	      &.add-column {
+		background-image: url("@{imagesLocation}/plus.png");
+	      }
+	      
+	  }
+	  
+	  .display-hidden-buttons() {
+	    button {
+	      display: block;
 	    }
-	    
 	  }
 	  
 	}
@@ -219,6 +249,12 @@
 	.controls {
 	  display: none;
 	}
+      }
+      
+      .column {
+        .controls {
+          display: none;
+        }
       }
       
       .add-row {

@@ -49,3 +49,24 @@ test "remove button", () ->
   ok observations == 1, "should raise remove row event"
   
   
+###
+Test the add column button behavior
+###
+test "add column", () ->
+  view = new Pagy.RowView
+  
+  $el = view.$el
+  $controls = $el.find " > .controls "
+  $addColumnButton = $controls.find " > button.add-column "
+    
+  $addColumnButton.click()
+  
+  $columns = $el.find " > .contents > .column "
+  ok $columns.length == 2, "should create two initial columns"
+  
+  $addColumnButton.click()
+  
+  $columns = $el.find " > .contents > .column "
+  ok $columns.length == 3, "should create a third column"
+  
+    
