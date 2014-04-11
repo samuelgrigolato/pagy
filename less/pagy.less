@@ -1,4 +1,6 @@
 
+@imagesLocation: "../resources/images";
+
 @levelZeroBackgroundColor: black;
 @levelOneBackgroundColor: #222;
 
@@ -28,9 +30,13 @@
 
 @rowMargin: 10px;
 @rowBorder: 2px dashed #AAA;
-@rowMinimumHeight: 50px;
+@rowMinimumHeight: 100px;
 @rowHoverBackgroundColor: #EEEEFF;
 @rowHoverBorderColor: #AAF;
+@rowControlsWidth: @smallIconButtonSize + 2 * @smallIconButtonMargin;
+
+@smallIconButtonSize: 16px;
+@smallIconButtonMargin: 8px;
 
 .pagy {
   
@@ -49,7 +55,7 @@
     font-size: @smallerFontSize;
   }
   
-  button {
+  .text-button() {
     
     .default-font;
     font-weight: @buttonFontWeight;
@@ -69,6 +75,23 @@
     }
   }
   
+  .icon-button() {
+  
+    border: none;
+    background-color: transparent;
+    
+    &:hover {
+      cursor: pointer;
+    }
+    
+    .small() {
+      width: @smallIconButtonSize;
+      height: @smallIconButtonSize;
+      margin: @smallIconButtonMargin;
+    }
+  
+  }
+  
   .menu {
     
     position: absolute;
@@ -77,6 +100,10 @@
     width: @menuWidth;
     height: 100%;
     background-color: @levelOneBackgroundColor;
+    
+    button {
+      .text-button;
+    }
     
     button.exit {
       position: absolute;
@@ -131,6 +158,16 @@
     
       .page {
       
+	button {
+	  .icon-button;
+	  .icon-button.small;
+	  
+	  &.add-row {
+	    background-image: url("@{imagesLocation}/plus.png");
+	  }
+	  
+	}
+      
 	.row {
 	
 	  margin: @rowMargin;
@@ -138,10 +175,15 @@
 	  min-height: @rowMinimumHeight;
 	  text-align: center;
 	  
-	  > .controls {	  
-	    > .add-row {
+	  > .controls {
+	  
+	    float: left;
+	    width: @rowControlsWidth;
+	    
+	    > button {
 	      display: none;
-	    }	  
+	    }
+	    
 	  }
 	  
 	  &:hover {
@@ -149,9 +191,18 @@
 	    border-color: @rowHoverBorderColor;
 	    
 	    > .controls {	    
-	      > .add-row {
-		display: inline;
-	      }	    
+	      > button {
+		display: block;
+		
+		&.remove {
+		  background-image: url("@{imagesLocation}/trash.png");
+		}
+		
+		&.add-column {
+		  background-image: url("@{imagesLocation}/plus.png");
+		}
+		
+	      }
 	    }
 	    
 	  }
@@ -168,6 +219,10 @@
 	.controls {
 	  display: none;
 	}
+      }
+      
+      .add-row {
+        display: none;
       }
     
     }

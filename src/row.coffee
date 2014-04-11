@@ -16,13 +16,33 @@ class RowView extends Backbone.View
     
   className: "row"
     
+  events:
+    "click > .controls > .remove": "remove"
+    
   initialize: () ->  
     @model = @model || new RowModel
+    
+    $removeButton = $ "<button></button>"
+    $addColumnButton = $ "<button></button>"
+    
+    $removeButton.addClass "remove"
+    $addColumnButton.addClass "add-column"
+    
+    $controls = $ "<div></div>"
+    $controls.addClass "controls"
+    $controls.append $removeButton
+    $controls.append $addColumnButton
+    
+    @$el.append $controls
+    
     @render()
 
 
   render: () -> 
 
+
+  remove: () ->
+    @model.trigger "remove"
 
 
 # exports

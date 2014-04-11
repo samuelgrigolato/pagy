@@ -30,8 +30,6 @@ test "add row button appearance", () ->
   $el = view.$el
   $button = $el.find " > button.add-row "
   ok $button.length == 1, "should have an add row button"
-  expectedCaption = dictionary.giveMe "addRowButtonCaption"
-  ok ($button.text() == expectedCaption), "button should have the caption '#{expectedCaption}'"
   
 
 ###
@@ -45,3 +43,17 @@ test "add row button behavior", () ->
   $button.click()
   $rows = $el.find " > div.row "
   ok $rows.length == 2, "should add a new row"
+
+
+###
+Test remove row behavior
+###
+test "remove row", () ->
+  view = new Pagy.PageView
+  model = view.model
+  rows = model.get "rows"
+  row = rows[0]
+  row.trigger "remove"
+  rows = model.get "rows"
+  ok rows.length == 0, "should remove the row"
+  

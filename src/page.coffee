@@ -25,14 +25,28 @@ class PageModel extends Backbone.Model
 
   initialize: () ->
   
-    row = new Pagy.RowModel
-    @set "rows", [ row ]
+    @addRow()
 
 
   addRow: () ->
-    row = new Pagy.RowModel
+    row = @_newRow()
     rows = @get "rows"
     @set "rows", (rows.concat row)
+
+  
+  _newRow: () ->
+    row = new Pagy.RowModel
+    row.on "remove", () => @_removeRow row
+    row
+
+  
+  _removeRow: (row) ->
+    rows = @get "rows"
+    idx = rows.indexOf row
+    nextIdx = idx + 1
+    newRows = rows[...idx].concat rows[nextIdx...]
+    @set "rows", newRows
+
 
 
 class PageView extends Backbone.View
@@ -49,7 +63,6 @@ class PageView extends Backbone.View
     @model.on "change:rows", () => @render()
     
     @_addRowButton = $ "<button />"
-    @_addRowButton.text Pagy.Dictionary.giveMe "addRowButtonCaption"
     @_addRowButton.addClass "add-row"
     
     @render()
