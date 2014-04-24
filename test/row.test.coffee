@@ -100,5 +100,17 @@ test "maximum number of columns", () ->
   column = columns[0]
   column.trigger "remove"
   ok $addColumnButton.is(":not(.hidden)"), "should display the add column button again"
-  
-  
+
+
+###
+Test the propagation of row 
+nesting level to column
+###
+test "nesting level", () ->
+  model = new Pagy.RowModel { level: 3 }
+  model.addColumn()
+  columns = model.get "columns"
+  column = columns[0]
+  columnLevel = column.get "level"
+  ok columnLevel == 3, "should propagate level to column"
+

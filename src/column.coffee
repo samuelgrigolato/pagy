@@ -7,6 +7,14 @@ a column and all its functionality
 
 class ColumnModel extends Backbone.Model
 
+  ###
+  Defines the maximum nesting level,
+  if the current column is in this level
+  it should not be allowed to produce
+  child rows.
+  ###
+  @MAX_LEVEL: 2
+
   defaults:
     
     ###
@@ -14,6 +22,14 @@ class ColumnModel extends Backbone.Model
     rows of this column.
     ###
     "rows": []
+
+    ###
+    Define the nesting level
+    of this column, this information
+    should be provided by the parent
+    element.
+    ###
+    "level": 1
 
 
   addRow: () ->
@@ -26,7 +42,8 @@ class ColumnModel extends Backbone.Model
 
   
   _newRow: () ->
-    row = new Pagy.RowModel
+    columnLevel = @get "level"
+    row = new Pagy.RowModel { level: columnLevel + 1 }
     row.on "remove", () => @_removeRow row
     row
 
@@ -40,6 +57,11 @@ class ColumnModel extends Backbone.Model
       @set "rows", newRows
     else
       @set "rows", []
+
+
+  isMaximumLevelReached: () ->
+    level = @get "level"
+    level >= @constructor.MAX_LEVEL
 
 
 
@@ -80,6 +102,13 @@ class ColumnView extends Backbone.View
 
 
   render: () ->
+    
+    $controls = @$el.find " > .controls "
+    $addRowButton = $controls.find " > .add-row "
+    
+    maximumLevelReached = @model.isMaximumLevelReached()
+    $addRowButton.toggleClass "hidden", maximumLevelReached
+    
     $contents = @$el.find " > .contents "
     $contents.empty()
     @_renderRow row for row in @model.get "rows"

@@ -82,5 +82,26 @@ test "remove row", () ->
   row.trigger "remove"
   rows = model.get "rows"
   ok rows.length == 0, "should remove the rows"
+
+
+###
+Test nesting level behavior
+###
+test "nesting level", () ->
   
-    
+  model = new Pagy.ColumnModel { level: Pagy.ColumnModel.MAX_LEVEL }
+  view = new Pagy.ColumnView { model: model }
+  
+  $el = view.$el
+  $controls = $el.find " > .controls "
+  $addRowButton = $controls.find " > button.add-row "
+  
+  ok ($addRowButton.is ".hidden"), "should hide add row button"
+  
+  model = new Pagy.ColumnModel { level: 2 }
+  model.addRow()
+  rows = model.get "rows"
+  row = rows[0]
+  rowLevel = row.get "level"
+  ok rowLevel == 3, "should increment children's level"
+

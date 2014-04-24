@@ -22,6 +22,14 @@ class RowModel extends Backbone.Model
     or more rows
     ###
     "columns": []
+
+    ###
+    Define the nesting level
+    of this row, this information
+    should be provided by the parent
+    element.
+    ###
+    "level": 1
     
     
   addColumn: () ->
@@ -34,7 +42,7 @@ class RowModel extends Backbone.Model
     
   
   _newColumn: () ->
-    column = new Pagy.ColumnModel
+    column = new Pagy.ColumnModel { level: @get "level" }
     column.on "remove", () => @_removeColumn column
     column
 
