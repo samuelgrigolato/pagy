@@ -8,6 +8,11 @@ a row and all its functionality
 
 class RowModel extends Backbone.Model
 
+  ###
+  Maximum number of columns a row can have
+  ###
+  @MAX_COLUMNS: 4
+
   defaults:
     
     ###
@@ -43,6 +48,11 @@ class RowModel extends Backbone.Model
       @set "columns", newColumns
     else
       @set "columns", []
+
+
+  isMaximumColumnsReached: () ->
+    columns = @get "columns"
+    columns.length >= @constructor.MAX_COLUMNS
   
     
 
@@ -86,6 +96,13 @@ class RowView extends Backbone.View
 
 
   render: () -> 
+    
+    $controls = @$el.find " > .controls "
+    $addColumnButton = $controls.find " > .add-column "
+    
+    maximumColumnsReached = @model.isMaximumColumnsReached()
+    $addColumnButton.toggleClass "hidden", maximumColumnsReached
+    
     $contents = @$el.find " > .contents "
     $contents.empty()
     @_renderColumn column for column in @model.get "columns"

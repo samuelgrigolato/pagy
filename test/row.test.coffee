@@ -83,4 +83,22 @@ test "remove column", () ->
   columns = model.get "columns"
   ok columns.length == 0, "should remove the columns"
 
-    
+###
+Test the behavior around the maximum
+number of columns inside a row
+###
+test "maximum number of columns", () ->
+  view = new Pagy.RowView
+  model = view.model
+  model.addColumn() # adds 2 columns
+  model.addColumn() for i in [3..Pagy.RowModel.MAX_COLUMNS]
+  $el = view.$el
+  $controls = $el.find " > .controls "
+  $addColumnButton = $controls.find " > button.add-column "
+  ok $addColumnButton.is(".hidden"), "should hide the add column button"
+  columns = model.get "columns"
+  column = columns[0]
+  column.trigger "remove"
+  ok $addColumnButton.is(":not(.hidden)"), "should display the add column button again"
+  
+  
