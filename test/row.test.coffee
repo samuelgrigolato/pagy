@@ -114,3 +114,34 @@ test "nesting level", () ->
   columnLevel = column.get "level"
   ok columnLevel == 3, "should propagate level to column"
 
+
+###
+Test column count row class
+###
+test "column count row class", () ->
+  view = new Pagy.RowView
+  $el = view.$el
+  model = view.model
+  model.addColumn()
+  ok $el.is(".columns-2"), "should add columns-2 class"
+  model.addColumn()
+  ok $el.is(":not(.columns-2)"), "should remove columns-2 class"
+  ok $el.is(".columns-3"), "should add columns-3 class"
+  model.addColumn()
+  ok $el.is(":not(.columns-3)"), "should remove columns-3 class"
+  ok $el.is(".columns-4"), "should add columns-4 class"
+
+
+###
+Test last column behavior
+###
+test "last column", () ->
+  view = new Pagy.RowView
+  model = view.model
+  model.addColumn()
+  columns = model.get "columns"
+  first = columns[0]
+  last = columns[1]
+  ok !(first.get "last"), "should not set first column"
+  ok last.get "last", "should set last column"
+

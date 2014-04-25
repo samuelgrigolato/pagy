@@ -105,3 +105,28 @@ test "nesting level", () ->
   rowLevel = row.get "level"
   ok rowLevel == 3, "should increment children's level"
 
+
+###
+Test last column behavior
+###
+test "last column", () ->
+  
+  model = new Pagy.ColumnModel { last: true }
+  view = new Pagy.ColumnView { model: model }
+  $el = view.$el
+  ok $el.is(".last"), "should add last class"
+
+###
+Test not empty behavior
+###
+test "not empty", () ->
+  
+  view = new Pagy.ColumnView
+  $el = view.$el
+  ok $el.is(".empty"), "should have empty class"
+  ok $el.is(":not(.not-empty)"), "should not have not empty class"
+  model = view.model
+  model.addRow()
+  ok $el.is(":not(.empty)"), "should remove empty class"
+  ok $el.is(".not-empty"), "should add not empty class"
+

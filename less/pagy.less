@@ -28,28 +28,37 @@
 @pageMinimumHeight: 400px;
 @pageVerticalPadding: 2px;
 
-@rowMargin: 10px 10px 20px 10px;
-@rowBorder: 2px dashed #AAA;
-@rowMinimumHeight: 100px;
-@rowHoverBackgroundColor: #EEEEFF;
-@rowHoverBorderColor: #AAF;
+@rowMargin: 0;
+@rowBorder: 2px solid #AAF;
+@rowHoverBorderColor: #00F;
 
-@columnMargin: 10px;
-@columnBorder: 2px dashed #AAA;
-@columnMinimumHeight: 80px;
-@columnWidth: 30%;
-@columnHoverBackgroundColor: #EEEEFF;
-@columnHoverBorderColor: #AAF;
+@columnMargin: 0;
+@columnBorder: 2px solid #FAA;
+@columnHoverBorderColor: #F00;
 
-@controlsHeight: 20px;
+@controlsHeight: 50px;
+@rowControlsBackgroundColor: #EFEFFF;
+@rowControlsHoverBackgroundColor: #55F;
+@columnControlsBackgroundColor: #FFEFEF;
+@columnControlsHoverBackgroundColor: #F55;
 
 @smallIconButtonSize: 16px;
-@smallIconButtonMargin: 2px;
+@smallIconButtonMargin: 0;
 
 .pagy {
   
   position: relative;
   height: 100%;
+  
+  .box-sizing (@type: border-box) {
+    -webkit-box-sizing: @type;
+    -moz-box-sizing:    @type;
+    box-sizing:         @type;
+  }
+  
+  * {
+    .box-sizing();
+  }
   
   .clearfix {
     clear: both;
@@ -165,7 +174,6 @@
       width: 90%;
       min-height: @pageMinimumHeight;
       background-color: @pageBackgroundColor;
-      padding-top: @pageVerticalPadding;
       padding-bottom: @pageVerticalPadding;
       
     }
@@ -187,14 +195,42 @@
 	.row {
 	
 	  margin: @rowMargin;
-	  border: @rowBorder;
-	  min-height: @rowMinimumHeight;
 	  text-align: center;
 	  
+	  border-bottom: @rowBorder;
+	  background-color: @rowControlsBackgroundColor;
+	  
 	  &:hover {
-	    background-color: @rowHoverBackgroundColor;
 	    border-color: @rowHoverBorderColor;
+	    background-color: @rowControlsHoverBackgroundColor;
 	    .display-hidden-buttons();
+	  }
+	  
+	  &.columns-2 > .contents > .column {
+	    width: 45%;
+	  }
+	  
+	  &.columns-3 > .contents > .column {
+	    width: 30%;
+	  }
+	  
+	  &.columns-4 > .contents > .column {
+	    width: 23%;
+	  }
+	  
+	  &.columns-4 > .contents > .column.last {
+	    width: 21%;
+	  }
+	  
+	  &.columns-2, &.columns-3, &.columns-4 {
+	    & > .controls {
+	      float: left;
+	      width: 10%;
+	    }
+	  }
+	  
+	  &.last {
+	    border-bottom: none;
 	  }
 	  
 	}
@@ -203,16 +239,27 @@
 	
 	  float: left;
 	  margin: @columnMargin;
-	  border: @columnBorder;
-	  min-height: @columnMinimumHeight;
-	  width: @columnWidth;
 	  text-align: center;
 	  
+	  background-color: @columnControlsBackgroundColor;
+	  border-left: @columnBorder;
+	  
 	  &:hover {
-	    background-color: @columnHoverBackgroundColor;
 	    border-color: @columnHoverBorderColor;
+	    background-color: @columnControlsHoverBackgroundColor;
 	    .display-hidden-buttons();
 	  }
+	  
+	  &.not-empty > .controls {
+	    float: left;
+	    width: 10%;
+	  }
+	  
+	  & > .contents > .row {
+	    float: right;
+	    width: 90%;
+	  }
+	  
 	  
 	}
 	  
@@ -222,7 +269,6 @@
 	  
 	  > button {
 	  
-	      float: left;
 	      display: none;
 	      
 	      &.remove {
@@ -238,8 +284,10 @@
 	}
 	  
 	.display-hidden-buttons() {
-	  > .controls > button {
-	    display: block;
+	  & > .controls {
+	    & > button {
+	      display: block;
+	    }
 	  }
 	}
       

@@ -33,14 +33,22 @@ class RowModel extends Backbone.Model
     
     
   addColumn: () ->
-    columns = @get "columns"
-    newColumns = columns.concat [@_newColumn()]
-    if newColumns.length == 1
-      # add extra column if there wasn't any
-      newColumns = newColumns.concat [@_newColumn()]
-    @set "columns", newColumns
-    
   
+    columns = @get "columns"
+    if columns.length == 0
+      columns = [@_newColumn()]
+    
+    currentlyLast = columns[columns.length - 1]
+    currentlyLast.set "last", false
+    
+    newlyLast = @_newColumn()
+    newlyLast.set "last", true
+    
+    newColumns = columns.concat [newlyLast]
+    
+    @set "columns", newColumns
+
+
   _newColumn: () ->
     column = new Pagy.ColumnModel { level: @get "level" }
     column.on "remove", () => @_removeColumn column
@@ -111,6 +119,8 @@ class RowView extends Backbone.View
     maximumColumnsReached = @model.isMaximumColumnsReached()
     $addColumnButton.toggleClass "hidden", maximumColumnsReached
     
+    @_updateColumnCountClass()
+    
     $contents = @$el.find " > .contents "
     $contents.empty()
     @_renderColumn column for column in @model.get "columns"
@@ -120,6 +130,16 @@ class RowView extends Backbone.View
     columnView = new Pagy.ColumnView { model: column }    
     $contents = @$el.find " > .contents "
     $contents.append columnView.$el
+
+  _updateColumnCountClass: () ->
+    
+    for i in [2..RowModel.MAX_COLUMNS]
+      @$el.removeClass "columns-#{i}"
+    
+    columns = @model.get "columns"
+    columnCount = columns.length
+    if columnCount > 0
+      @$el.addClass "columns-#{columnCount}"
 
 
   remove: () ->

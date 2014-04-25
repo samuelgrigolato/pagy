@@ -30,6 +30,12 @@ class ColumnModel extends Backbone.Model
     element.
     ###
     "level": 1
+    
+    ###
+    Is this column the last
+    one in its parent array?
+    ###
+    "last": false
 
 
   addRow: () ->
@@ -102,6 +108,12 @@ class ColumnView extends Backbone.View
 
 
   render: () ->
+    
+    @$el.toggleClass "last", @model.get "last"
+    
+    empty = (@model.get "rows").length == 0
+    @$el.toggleClass "empty", empty
+    @$el.toggleClass "not-empty", !empty
     
     $controls = @$el.find " > .controls "
     $addRowButton = $controls.find " > .add-row "
